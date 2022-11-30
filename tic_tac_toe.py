@@ -28,46 +28,51 @@ def main():
     win_condition = 0
     turn = 0
     print("Test")
-    if board [0][0] == "x" and board [1][0] == "x" and board [2][0] == "x":
-        win_condition == 1
-    elif board [0][0] == "x" and board [0][1] == "x" and board [0][2] == "x":
-        win_condition == 1
-    elif board [0][0] == "x" and board [1][1] == "x" and board [2][2] == "x":
-        win_condition == 1
-    elif board [0][2] == "x" and board [1][1] == "x" and board [2][0] == "x":
-        win_condition == 1
-    elif board [1][0] == "x" and board [1][1] == "x" and board [1][2] == "x":
-        win_condition == 1
-    elif board [2][0] == "x" and board [2][1] == "x" and board [2][2] == "x":
-        win_condition == 1
-    elif board [0][1] == "x" and board [1][1] == "x" and board [2][1] == "x":
-        win_condition == 1
-    elif board [0][2] == "x" and board [1][2] == "x" and board [2][2] == "x":
-        win_condition == 1
-    elif board [0][0] == "O" and board [1][0] == "O" and board [2][0] == "O":
-        win_condition == 2
-    elif board [0][0] == "O" and board [0][1] == "O" and board [0][2] == "O":
-        win_condition == 2
-    elif board [0][0] == "O" and board [1][1] == "O" and board [2][2] == "O":
-        win_condition == 2
-    elif board [0][2] == "O" and board [1][1] == "O" and board [2][0] == "O":
-        win_condition == 2
-    elif board [1][0] == "O" and board [1][1] == "O" and board [1][2] == "O":
-        win_condition == 2
-    elif board [2][0] == "O" and board [2][1] == "O" and board [2][2] == "O":
-        win_condition == 2
-    elif board [0][1] == "O" and board [1][1] == "O" and board [2][1] == "O":
-        win_condition == 2
-    elif board [0][2] == "O" and board [1][2] == "O" and board [2][2] == "O":
-        win_condition == 2
-    else:
-        win_condition == 0
+    count = 0 
+    while count = 0 
+        if board [0][0] == "x" and board [1][0] == "x" and board [2][0] == "x":
+            win_condition == 1
+        elif board [0][0] == "x" and board [0][1] == "x" and board [0][2] == "x":
+            win_condition == 1
+        elif board [0][0] == "x" and board [1][1] == "x" and board [2][2] == "x":
+            win_condition == 1
+        elif board [0][2] == "x" and board [1][1] == "x" and board [2][0] == "x":
+            win_condition == 1
+        elif board [1][0] == "x" and board [1][1] == "x" and board [1][2] == "x":
+            win_condition == 1
+        elif board [2][0] == "x" and board [2][1] == "x" and board [2][2] == "x":
+            win_condition == 1
+        elif board [0][1] == "x" and board [1][1] == "x" and board [2][1] == "x":
+            win_condition == 1
+        elif board [0][2] == "x" and board [1][2] == "x" and board [2][2] == "x":
+            win_condition == 1
+        elif board [0][0] == "O" and board [1][0] == "O" and board [2][0] == "O":
+            win_condition == 2
+        elif board [0][0] == "O" and board [0][1] == "O" and board [0][2] == "O":
+            win_condition == 2
+        elif board [0][0] == "O" and board [1][1] == "O" and board [2][2] == "O":
+            win_condition == 2
+        elif board [0][2] == "O" and board [1][1] == "O" and board [2][0] == "O":
+            win_condition == 2
+        elif board [1][0] == "O" and board [1][1] == "O" and board [1][2] == "O":
+            win_condition == 2
+        elif board [2][0] == "O" and board [2][1] == "O" and board [2][2] == "O":
+            win_condition == 2
+        elif board [0][1] == "O" and board [1][1] == "O" and board [2][1] == "O":
+            win_condition == 2
+        elif board [0][2] == "O" and board [1][2] == "O" and board [2][2] == "O":
+            win_condition == 2
+        else:
+            win_condition == 0
+        count = count+1
     if win_condition == 0:
         play(turn,board)
     elif win_condition == 1:
         print("x won")
     elif win_condition == 2:
         print("O won")
+    elif win_condition == 0 and turn >10:
+        print("its a tie")
     else:
         print("something went wrong")
 
