@@ -4,6 +4,19 @@ Created on Dec 5, 2022
 @author: CWolfe25
 """
 def main():
+    """
+    This is the main of my function and it forms the tic tac toe board
+    local variables:
+        Board = list
+        win_condition = int
+        turn = int
+        choice = int
+    Board is the variable that is where the tic tac toe is being played
+    win_condition shows who won the game and is being checked
+    turn is the amount of plays that game has had
+    
+    
+    """
     board = [["1","2","3"],
     ["4","5","6"],
     ["7","8","9"]]
