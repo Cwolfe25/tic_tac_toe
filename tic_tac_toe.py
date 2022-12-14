@@ -57,7 +57,11 @@ def main():
             else:
                 board[O_row][O_col] == "O"
         turn = turn + 1
-        print(board)
+        for row in range (0,3):
+            for col in range(0,3):
+                print(board[row][col], end = "")
+            print("")
+            
         win_condition = win(board,win_condition,turn)                           #checks to see if ther is a winner
         if win_condition == 1:                                                  #see's if x has won
             print("x won")
