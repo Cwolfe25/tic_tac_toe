@@ -69,7 +69,6 @@ def play_choose(player_board):
         elif play_choice == "E5" or play_choice == "e5":
             player_board[4][4] = "v"
         ship_numb = ship_numb - 1
-    print(player_board)
     return(player_board)                                                                    #returns the updated board to main
 def comp_choice(comp_board):
     """
@@ -104,7 +103,6 @@ def user_choice(player_show,comp_board):
         play_choice = str
     play_choice is where the player chooses to guess where the computers ship is 
     """
-    print(player_show)
     print("enter in A-e and 1-5 for cords")
     play_choice = input("what cord do you want")
     if play_choice == "A1" or play_choice == "a1":                              #yeah this whole thing is super inefficent but like I need to do it in a way I understand and can make work
@@ -257,7 +255,6 @@ def user_choice(player_show,comp_board):
             
         else:
             player_show[4][4] = "o"
-    print(player_show)
     return(player_show)
 def comp_v_user(player_board,comp_show):
     """
@@ -279,38 +276,55 @@ def play_winner(win_condition,player_show):
     takes 
         win_condition
         player_show
+    returns 
+        win_condition
+    variables
+        play_counter = int
+        x = str
+        row = int
+    play_counter is the amount of hits the player has
+    x is just x and is a hit
+    """
+    x = "x"
+    play_counter = 0
+    for row in range(0,4):                                                                  #goes through every place on the board and checks if its a hit or a miss
+        for column in range(0,4):
+            if player_show[row][column] == x:
+                play_counter = play_counter + 1                                             
+    if play_counter == 4:                                                                   #if they have enough hits the computer changes the win condition
+        win_condition = 1
+    else:
+        win_condition = 0 
+    return(win_condition)
+
+def prints(board):
+    """
+    takes:
+    board
+    
+    """
+    for row in range(0,5):                                                                  #goes through every row and prints it 
+        print(board[row])
+def comp_winner(win_condition,comp_show):
+    """
+    takes 
+        win_condition
         comp_show
     returns 
         win_condition
     variables
         play_counter = int
-        comp_counter = int
         x = int
-    play_counter is the amount of hits the player has
-    comp_counter is the amount of hits the computer has
+    play_counter is the amount of hits the computer has
     x is just x and is a hit
+    same exact code as the player_winner
     """
     x = "x"
     play_counter = 0
     for row in range(0,4):  
         column = 0 
         for column in range(0,4):
-            if player_show == x:
-                play_counter = play_counter + 1                                                            #these for loops track the amount of hits the player and computer has
-    if play_counter == 4:                                                                   #sees if the player or computer has sunk all of the ships
-        win_condition = 1
-    else:
-        win_condition = 0 
-    return(win_condition)
-
-
-def comp_winner(win_condition,comp_show):
-    x = "x"
-    play_counter = 0
-    for row in range(0,4):  
-        column = 0 
-        for column in range(0,4):
-            if comp_show == x:
+            if comp_show[row][column] == x:
                 play_counter = play_counter + 1                                                            #these for loops track the amount of hits the player and computer has
     if play_counter == 4:                                                                   #sees if the player or computer has sunk all of the ships
         win_condition = 1
@@ -340,7 +354,12 @@ def main():
     comp_show = [['A1','A2','A3','A4','A5'],['B1','B2','B3','B4','B5'],['C1','C2','C3','C4','C5'],['D1','D2','D3','D4','D5'],['E1','E2','E3','E4','E5']]
     player_board = play_choose(player_board)                                                #all of the boards are above
     comp_board = comp_choice(comp_board)                                                    #these are making the boards
-    print(comp_board)
+    print("your board")
+    prints(player_board)
+    print("comp_board for test")
+    prints(comp_board)
+    print("your showing board")
+    prints(player_show)
     turn = 0 
     win_condition = 0
     show = 10
@@ -349,6 +368,7 @@ def main():
         if turn == 0 or turn == 2 or turn == 4 or turn == 6 or turn == 8 or turn == 10 or turn == 12 or turn == 14 or turn == 16 or turn == 18:     #even turns are the player odd is the computer
             player_show = user_choice(player_show,comp_board)                               #allows for the user to choose
             show = show - 1
+            prints(player_show)
             print("you have", show, "turns left")
             if show == 0:
                 print("you tied")
