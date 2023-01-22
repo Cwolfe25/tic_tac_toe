@@ -11,7 +11,6 @@ def play_choose(player_board):
     ship_numb tracks the amount of ships the player has placed
     play_choice is the place where the player places a ship
     """
-    print("rows 1-5 columns 1-5")
     print("place 4 ships")
     ship_numb = 4
     while ship_numb >0:
@@ -275,7 +274,7 @@ def comp_v_user(player_board,comp_show):
     else:
         comp_show[row_comp][col_comp] = "o"
     return(comp_show)
-def winner(win_condition,player_show,comp_show):
+def play_winner(win_condition,player_show):
     """
     takes 
         win_condition
@@ -291,23 +290,33 @@ def winner(win_condition,player_show,comp_show):
     comp_counter is the amount of hits the computer has
     x is just x and is a hit
     """
-    print("ok")
     x = "x"
     play_counter = 0
-    comp_counter = 0 
-    for item in player_show:                                                                #these for loops track the amount of hits the player and computer has
-        if item == x:
-            play_counter = play_counter + 1
-    for item in comp_show:
-        if item == x:
-            comp_counter = comp_counter + 1 
+    for row in range(0,4):  
+        column = 0 
+        for column in range(0,4):
+            if player_show == x:
+                play_counter = play_counter + 1                                                            #these for loops track the amount of hits the player and computer has
     if play_counter == 4:                                                                   #sees if the player or computer has sunk all of the ships
         win_condition = 1
-    if comp_counter == 4:
-        win_condition = 2
+    else:
+        win_condition = 0 
     return(win_condition)
 
 
+def comp_winner(win_condition,comp_show):
+    x = "x"
+    play_counter = 0
+    for row in range(0,4):  
+        column = 0 
+        for column in range(0,4):
+            if comp_show == x:
+                play_counter = play_counter + 1                                                            #these for loops track the amount of hits the player and computer has
+    if play_counter == 4:                                                                   #sees if the player or computer has sunk all of the ships
+        win_condition = 1
+    else:
+        win_condition = 0 
+    return(win_condition)
 
 def main():
     """
@@ -331,17 +340,30 @@ def main():
     comp_show = [['A1','A2','A3','A4','A5'],['B1','B2','B3','B4','B5'],['C1','C2','C3','C4','C5'],['D1','D2','D3','D4','D5'],['E1','E2','E3','E4','E5']]
     player_board = play_choose(player_board)                                                #all of the boards are above
     comp_board = comp_choice(comp_board)                                                    #these are making the boards
+    print(comp_board)
     turn = 0 
     win_condition = 0
-
-    while win_condition == 0:                                                               #before a winner is decided
+    show = 10
+    print("you have 10 turns to win")
+    while show > 0:                                                               #before a winner is decided
         if turn == 0 or turn == 2 or turn == 4 or turn == 6 or turn == 8 or turn == 10 or turn == 12 or turn == 14 or turn == 16 or turn == 18:     #even turns are the player odd is the computer
             player_show = user_choice(player_show,comp_board)                               #allows for the user to choose
-            turn = turn + 1
+            show = show - 1
+            print("you have", show, "turns left")
+            if show == 0:
+                print("you tied")
+            
+            win_condition = play_winner(win_condition,player_show)
+            if win_condition == 1:
+                print("you won")
+                show= show - 10
         elif turn == 1 or turn == 3 or turn == 5 or turn == 7 or turn == 9 or turn ==11 or turn == 13 or turn == 15 or turn == 17 or turn == 19:
             comp_show = comp_v_user(player_board,comp_show)
-            turn = turn + 1
-        win_condition = winner(comp_show,player_show,win_condition)
+            win_condition = comp_winner(win_condition,comp_show)
+            if win_condition == 2:
+                print("you lost")
+                show = show - 10
+        turn = turn + 1
     if win_condition == 1:                                                                  #prints who won
         print("computer won")
     elif win_condition == 2:
