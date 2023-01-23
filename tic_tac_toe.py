@@ -75,7 +75,7 @@ def main():
                 print("enter in a number from 1-9")
                 print("you forfit your turn because you are stupid")
         turn = turn + 1                                                                             #tracks turns
-        print(board)
+        prints(board)
         win_condition = win(board,win_condition,turn)                                               #runs the win function
         if win_condition == 1:                                                                      #posibilities for winner
             print("x won")
@@ -135,7 +135,14 @@ def win(board,win_condition,turn):
     else:
         win_condition = 0
     return win_condition
-
+def prints(board):
+    """
+    takes:
+    board
+    
+    """
+    for row in range(0,3):                                                                  #goes through every row and prints it 
+        print(board[row])
 
 if __name__ == "__main__":
     main()
