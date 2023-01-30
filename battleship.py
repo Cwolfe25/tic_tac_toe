@@ -68,7 +68,11 @@ def play_choose(player_board):
             player_board[4][3] = "v"
         elif play_choice == "E5" or play_choice == "e5":
             player_board[4][4] = "v"
-        ship_numb = ship_numb - 1
+        ship_numb =4
+        for row in range(0,4):                                                              #goes through the board checks to make sure your not placing your ships on the same space                                               #goes through every place on the board and checks if its a hit or a miss
+            for column in range(0,4):
+                if player_board[row][column] == "v":
+                    ship_numb = ship_numb - 1
     return(player_board)                                                                    #returns the updated board to main
 def comp_choice(comp_board):
     """
@@ -102,6 +106,7 @@ def user_choice(player_show,comp_board):
     variables
         play_choice = str
     play_choice is where the player chooses to guess where the computers ship is 
+    asks the player for a places to look for a ship and if a ship is there it will place a x on the player show and a o if no ship
     """
     print("enter in A-e and 1-5 for cords")
     play_choice = input("what cord do you want")
@@ -263,6 +268,7 @@ def comp_v_user(player_board,comp_show):
         comp_show
     returns
         comp_show
+    randomly selects a row and column and checks if a ship is there
     """
     row_comp = random.randint(0,4)                                                      #generates random coardnets to see if a ship is there
     col_comp = random.randint(0,4)
@@ -301,7 +307,7 @@ def prints(board):
     """
     takes:
     board
-    
+    takes what ever board its given and prints it
     """
     for row in range(0,5):                                                                  #goes through every row and prints it 
         print(board[row])
@@ -318,6 +324,7 @@ def comp_winner(win_condition,comp_show):
     play_counter is the amount of hits the computer has
     x is just x and is a hit
     same exact code as the player_winner
+    goes through every place on the computers board and see's how many ships have been sunk and if they have all been sunk it changes the win condition 
     """
     x = "x"
     play_counter = 0
@@ -331,7 +338,13 @@ def comp_winner(win_condition,comp_show):
     else:
         win_condition = 0 
     return(win_condition)
-
+def checker(board,ship_numb):
+    ship_numb = 4 
+    for row in range(0,4):
+            ship_numb = 4
+            for column in range(0,4):
+                if board[row][column]:
+                    ship_numb = ship_numb - 1 
 def main():
     """
     variables
@@ -354,7 +367,7 @@ def main():
     comp_show = [['A1','A2','A3','A4','A5'],['B1','B2','B3','B4','B5'],['C1','C2','C3','C4','C5'],['D1','D2','D3','D4','D5'],['E1','E2','E3','E4','E5']]
     player_board = play_choose(player_board)                                                #all of the boards are above
     comp_board = comp_choice(comp_board)                                                    #these are making the boards
-    print("your board")
+    print("your board")                                                             #shows the boards
     prints(player_board)
     print("comp_board for test")
     prints(comp_board)
@@ -370,7 +383,7 @@ def main():
             show = show - 1
             prints(player_show)
             print("you have", show, "turns left")
-            if show == 0:
+            if show == 0:                                                                   #if you run out of turns you tie
                 print("you tied")
             
             win_condition = play_winner(win_condition,player_show)
@@ -384,10 +397,6 @@ def main():
                 print("you lost")
                 show = show - 10
         turn = turn + 1
-    if win_condition == 1:                                                                  #prints who won
-        print("computer won")
-    elif win_condition == 2:
-        print("you won")
 
 
 
