@@ -68,6 +68,8 @@ def play_choose(player_board):
             player_board[4][3] = "v"
         elif play_choice == "E5" or play_choice == "e5":
             player_board[4][4] = "v"
+        else:
+            print("enter in an actual ship place")
         ship_numb =4
         for row in range(0,4):                                                              #goes through the board checks to make sure your not placing your ships on the same space                                               #goes through every place on the board and checks if its a hit or a miss
             for column in range(0,4):
@@ -260,6 +262,8 @@ def user_choice(player_show,comp_board):
             
         else:
             player_show[4][4] = "o"
+    else:
+        print("enter in a real ship place")
     return(player_show)
 def comp_v_user(player_board,comp_show):
     """
