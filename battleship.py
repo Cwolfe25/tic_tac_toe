@@ -70,9 +70,9 @@ def play_choose(player_board):
             player_board[4][4] = "v"
         else:
             print("enter in an actual ship place")
-        ship_numb =4
-        for row in range(0,4):                                                              #goes through the board checks to make sure your not placing your ships on the same space                                               #goes through every place on the board and checks if its a hit or a miss
-            for column in range(0,4):
+        ship_numb = 4
+        for row in range(0,5):                                                              #goes through the board checks to make sure your not placing your ships on the same space                                               #goes through every place on the board and checks if its a hit or a miss
+            for column in range(0,5):
                 if player_board[row][column] == "v":
                     ship_numb = ship_numb - 1
     return(player_board)                                                                    #returns the updated board to main
@@ -96,7 +96,11 @@ def comp_choice(comp_board):
         comp_row = random.randint(0,4)                                                      #generates the cords for the ships
         comp_col = random.randint(0,4)
         comp_board[comp_row][comp_col] = "v"                                                #places a mark on the computers board
-        times = times - 1
+        times = 4
+        for row in range(0,5):                                                              #goes through the board checks to make sure your not placing your ships on the same space
+            for column in range(0,5):
+                if comp_board[row][column] == "v":
+                    times = times - 1
     return(comp_board)
 def user_choice(player_show,comp_board):
     """
@@ -297,8 +301,8 @@ def play_winner(win_condition,player_show):
     """
     x = "x"
     play_counter = 0
-    for row in range(0,4):                                                                  #goes through every place on the board and checks if its a hit or a miss
-        for column in range(0,4):
+    for row in range(0,5):                                                                  #goes through every place on the board and checks if its a hit or a miss
+        for column in range(0,5):
             if player_show[row][column] == x:
                 play_counter = play_counter + 1                                             
     if play_counter == 4:                                                                   #if they have enough hits the computer changes the win condition
@@ -332,9 +336,9 @@ def comp_winner(win_condition,comp_show):
     """
     x = "x"
     play_counter = 0
-    for row in range(0,4):  
+    for row in range(0,5):  
         column = 0 
-        for column in range(0,4):
+        for column in range(0,5):
             if comp_show[row][column] == x:
                 play_counter = play_counter + 1                                                            #these for loops track the amount of hits the player and computer has
     if play_counter == 4:                                                                   #sees if the player or computer has sunk all of the ships
@@ -342,13 +346,6 @@ def comp_winner(win_condition,comp_show):
     else:
         win_condition = 0 
     return(win_condition)
-def checker(board,ship_numb):
-    ship_numb = 4 
-    for row in range(0,4):
-            ship_numb = 4
-            for column in range(0,4):
-                if board[row][column]:
-                    ship_numb = ship_numb - 1 
 def main():
     """
     variables
