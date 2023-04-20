@@ -2,6 +2,20 @@
 Created on Apr 10, 2023
 
 @author: CWolfe25
+file = file
+file is the file where I get the words from
+d is a dictionary
+d takes all the lines that have "From:" in it
+key an str
+key is the letter
+value = str
+value is the number of occurences
+lst = list
+lst stores the hours
+d2 is a dictionary 
+d2 takes all the hours and gets their occurences
+tup is a tuple
+it stores the hour and number of occurences then sorts it
 '''
 def main():
     print("ok")
@@ -52,6 +66,12 @@ def main():
     
         
 def prinz(tup):
+    """
+    takes tup
+    returns none
+    variables
+    tup = tuple
+    """
     for value in tup:                                       #prints all the values individualy 
         print(value)
 
