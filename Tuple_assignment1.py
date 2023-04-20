@@ -5,6 +5,8 @@ Created on Apr 3, 2023
 variable
 file = file
 d = dictionary
+words = str
+tup = tuple
 '''
 def main():
     try:
