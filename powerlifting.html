@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
+<script>
+function myFunction() {
 
-<body style="background-color:orange;">
+  let b = document.getElementById("bench").value;
+
+  let text = "";
+  if (isNaN(b) || b < 1 || b > 1000) {
+    text = "Bench Input not valid"; }
+  document.getElementByid("ben").innerHTML = text;
+
+  let s = document.getElementById("squat").value;
+
+  let ap = "";
+  if (isNaN(s) || s < 1 || s > 1000) {
+    text = "Squat Input not valid"; }
+  document.getElementByid("squa").innerHTML = ap;
+
+
+  let d = document.getElementById("deadlift").value;
+
+  let gs = "";
+  if (isNaN(d) || d < 1 || d > 1000) {
+    text = "Deadlift Input not valid"; }
+  document.getElementByid("dead").innerHTML = gs;
+}
+</script>
+<head>
+<style>
+body {
+	background-color: orange;
+}
+</style>
+</head>
+<body>
 
 <h1>Power Lifting Club</h1>
 <h2>2023 - 2024 interest form</h2>
 <img src= "https://vtlogo.com/wp-content/uploads/2021/05/greenwich-country-day-school-vector-logo-small.png" alt="Trulli" width="500" height="333">
 <form name = "MyForm" >action="thanks.html" method="get"
   <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
+  <input type="text" id="fname" name="fname" required><br>
   <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname"><br>
+  <input type="text" id="lname" name="lname" required><br>
 
 
 <p> Enter Your Grade:</p>
 
-  <input type="radio" id="ninth" name="fav_language" value="ninth">
+  <input type="radio" id="ninth" name="ninth" value="ninth">
   <label for="ninth">9th</label><br>
-  <input type="radio" id="tenth" name="fav_language" value="tenth">
+  <input type="radio" id="tenth" name="tenth" value="tenth">
   <label for="tenth">10th</label><br>
-  <input type="radio" id="eleventh" name="fav_language" value="eleventh">
+  <input type="radio" id="eleventh" name="eleventh" value="eleventh">
   <label for="eleventh">11th</label><br>
-  <input type="radio" id="twelth" name="fav_language" value="twelth">
+  <input type="radio" id="twelth" name="twelth" value="twelth">
   <label for="twelth">12th</label><br>
 
 
@@ -51,33 +83,6 @@
 <p id="dead"></p>
 </form>
 
-<script>
-    function myFunction() {
-    
-      let b = document.getElementById("bench").value;
-      console.log("cy")
-    
-      let text = "";
-      if (isNaN(b) || b < 1 || b > 1000) {
-        text = "Bench Input not valid"; }
-      document.getElementById("ben").innerHTML = text;
-    
-      let s = document.getElementById("squat").value;
-    
-      let ap = "";
-      if (isNaN(s) || s < 1 || s > 1000) {
-        text = "Squat Input not valid"; }
-      document.getElementById("squa").innerHTML = ap;
-    
-    
-      let d = document.getElementById("deadlift").value;
-    
-      let gs = "";
-      if (isNaN(d) || d < 1 || d > 1000) {
-        text = "Deadlift Input not valid"; }
-      document.getElementById("dead").innerHTML = gs;
-    }
-    </script>
 
 </body>
 </html>
