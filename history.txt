@@ -1,0 +1,54 @@
+     1	14:31	ls
+     2	14:31	ls -l
+     3	14:32	clear
+     4	14:32	pwd
+     5	14:34	ls
+     6	14:34	ls -1
+     7	14:34	ls -l
+     8	14:36	ls
+     9	14:37	ls
+    10	14:38	ls
+    11	14:39	cd ../megan24/
+    12	14:39	ls
+    13	14:39	cd
+    14	14:39	man ls
+    15	14:40	who
+    16	14:41	clear
+    17	14:42	whoami
+    18	14:43	ls
+    19	14:43	ls -l
+    20	14:43	cat hello.py
+    21	14:45	nano weather.txt
+    22	14:46	cp weather.txt sunny.txt
+    23	14:46	ls
+    24	14:48	date
+    25	14:48	time
+    26	14:48	du
+    27	14:49	rm weather.txt
+    28	14:49	ls
+    29	14:49	mkdir tuesday
+    30	14:49	ls
+    31	14:49	cd tuesday
+    32	14:52	cd
+    33	14:52	clear
+    34	14:54	begin
+    35	14:54	pwd
+    36	14:54	cd
+    37	14:55	pwd
+    38	14:55	nano cs.txt
+    39	14:55	ls
+    40	14:57	cp cs.txt cs2.txt
+    41	14:57	ls
+    42	14:57	ls -l
+    43	14:58	cat cs2.txt
+    44	14:59	mkdir comp_sci
+    45	15:01	who
+    46	15:02	rm cs2.txt
+    47	15:02	ls
+    48	15:04	du
+    49	15:05	ls
+    50	15:05	man ls
+    51	15:07	hs
+    52	15:07	history
+    53	15:07	end
+    54	15:08	history > history.txt
