@@ -1,31 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script>
-function myFunction() {
 
-  let b = document.getElementById("bench").value;
-
-  let text = "";
-  if (isNaN(b) || b < 1 || b > 1000) {
-    text = "Bench Input not valid"; }
-  document.getElementByid("ben").innerHTML = text;
-
-  let s = document.getElementById("squat").value;
-
-  let ap = "";
-  if (isNaN(s) || s < 1 || s > 1000) {
-    text = "Squat Input not valid"; }
-  document.getElementByid("squa").innerHTML = ap;
-
-
-  let d = document.getElementById("deadlift").value;
-
-  let gs = "";
-  if (isNaN(d) || d < 1 || d > 1000) {
-    text = "Deadlift Input not valid"; }
-  document.getElementByid("dead").innerHTML = gs;
-}
-</script>
 <head>
 <style>
 body {
@@ -34,7 +9,32 @@ body {
 </style>
 </head>
 <body>
-
+    <script>
+        function myFunction() {
+        alert("14")
+          let b = document.getElementById("bench").value;
+        
+          let text = "";
+          if (isNaN(b) || b < 1 || b > 1000) {
+            text = "Bench Input not valid"; }
+          document.getElementByid("ben").innerHTML = text;
+        
+          let s = document.getElementById("squat").value;
+        
+          let ap = "";
+          if (isNaN(s) || s < 1 || s > 1000) {
+            text = "Squat Input not valid"; }
+          document.getElementByid("squa").innerHTML = ap;
+        
+        
+          let d = document.getElementById("deadlift").value;
+        
+          let gs = "";
+          if (isNaN(d) || d < 1 || d > 1000) {
+            text = "Deadlift Input not valid"; }
+          document.getElementByid("dead").innerHTML = gs;
+        }
+        </script>
 <h1>Power Lifting Club</h1>
 <h2>2023 - 2024 interest form</h2>
 <img src= "https://vtlogo.com/wp-content/uploads/2021/05/greenwich-country-day-school-vector-logo-small.png" alt="Trulli" width="500" height="333">
