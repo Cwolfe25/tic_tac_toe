@@ -271,8 +271,9 @@ class MatrixMonday:
         if self.rows == self.columns:                                           #makes sure that its a square matrix
             r = int(self.rows)                                                  #gets the rows and columns
             c = int(self.columns)
+            check = MatrixMonday(r,c)
             c = c * 2                                                           #creates the new matrix with diagonal matrix
-
+            
             invm = MatrixMonday(r,c)                                            #creates a said matrix
             for i in range(self.rows):                                          #copies the og matrix
                 for j in range(self.rows):
