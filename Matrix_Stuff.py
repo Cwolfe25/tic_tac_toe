@@ -49,7 +49,6 @@ class MatrixMonday:
                     mp.set_entry(i,j,temp)                                              #sets the sum into the added matrix
         else:
             print("the addition could not go through because the matricies diementiond don't match")
-            #note to self - needs to break
         return(mp)
     def times(self, other):
         """
@@ -179,8 +178,6 @@ class MatrixMonday:
 
         """
         self.scalarTimesRow(numb,row1)                                          #multiplies numb into row 1
-        print("temporary matrix")
-        self.print()
         temp=0
         for j in range(self.columns):  
             p1 = self.get_entry(row1,j)
@@ -221,22 +218,22 @@ class MatrixMonday:
                     pass
                 elif i < j:                                                     #this skips the ones that are on the other side of the triangle
                     pass
-                elif i == j and self.m1[i][j] != 1:                             
+                elif i == j and float(self.get_entry(i,j)) != 1.0:                             
                     temp = float(self.get_entry(i,j))                           #this takes the value
                     if temp != 0:                                               #maeks sure the function doesn't break
                         inv = 1 / temp                                          #reverses the row so its this varible becomes 1
                         self.scalarTimesRow(inv,i)
                     else:
                         self.switch[i][i+1]                                     #switches the row if it doesn't works
-                    self.print()
+
                 elif i > j and int(self.get_entry(i,j)) !=0:                    #if its outside of the upper triangle
                     numb = self.get_entry(i,j)                                  #takes the value so it can be turned to 0
                     numb = float(numb)
                     numb = numb * -1
                     self.comb(numb, j, i)                                       #combines it so its 0
-                    self.print()
-                elif i == j and int(self.get_entry(i,j)) == 0:                  #work in progress
-                    print("ok")
+        return(self)
+
+
                 
 
 
@@ -279,13 +276,11 @@ class MatrixMonday:
                 for j in range(self.rows):
                     temp = self.get_entry(i,j)#makes sure its a float later
                     invm.set_entry(i,j,temp)
-            print("inverted matrix")
-            invm.print()
+
             for i in range(invm.rows):                                          #inputs the diagonal matrix
                 col = r+i
                 invm.set_entry(i, col, 1)
-            print("normal + echoln")
-            invm.print()
+
             invm.row_reduce()                                                   #row reduces this matrix
             for a in range(invm.rows):                                          #goes through the same matrix
 
@@ -302,7 +297,7 @@ class MatrixMonday:
                         revert = float(invm.get_entry(a,a))                     #reverses what happened to the other row
                         revinv = 1/revert
                         invm.scalarTimesRow(revinv,a)
-            invm.print()
+
             r = int(self.rows)                                                  #creates a new matrix to store the inverse
             c = int(self.columns)
             ic = int(invm.columns)
