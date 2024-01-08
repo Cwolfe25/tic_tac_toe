@@ -220,7 +220,7 @@ class MatrixMonday:
                     pass
                 elif i == j and float(self.get_entry(i,j)) != 1.0:                             
                     temp = float(self.get_entry(i,j))                           #this takes the value
-                    if temp != 0:                                               #maeks sure the function doesn't break
+                    if temp != 0:                                               #makes sure the function doesn't break
                         inv = 1 / temp                                          #reverses the row so its this varible becomes 1
                         self.scalarTimesRow(inv,i)
                     else:
@@ -264,6 +264,23 @@ class MatrixMonday:
         ic = int
         inverse  = matrix
 
+        self = the matrix being imported in
+        invm = the matrix being inverted with the diagonal
+        r = the rows of the imported matrix
+        c = columns of the second matrix
+        i = rows for most for loops
+        j = columns for most for loops
+        temp = the location for a value when creating the matrix
+        col = was used to reach the other side of the big invm matrix
+        a = rows
+        b = columns
+        revert = temp location for a value
+        revinv = the inverse of revert
+        numb = location of a value in the other row
+        ivn = multipied to make it subtraction
+        ic = the amount of columns for hte big matrix
+        inverse = where the inverse is stored
+
         """
         if self.rows == self.columns:                                           #makes sure that its a square matrix
             r = int(self.rows)                                                  #gets the rows and columns
@@ -274,7 +291,8 @@ class MatrixMonday:
             invm = MatrixMonday(r,c)                                            #creates a said matrix
             for i in range(self.rows):                                          #copies the og matrix
                 for j in range(self.rows):
-                    temp = self.get_entry(i,j)#makes sure its a float later
+                    temp = self.get_entry(i,j)
+                    temp = float(temp)
                     invm.set_entry(i,j,temp)
 
             for i in range(invm.rows):                                          #inputs the diagonal matrix
