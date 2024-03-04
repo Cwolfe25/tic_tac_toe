@@ -1,87 +1,100 @@
 import matplotlib.pyplot as plt
-
-import matplotlib.animation as animation
-
 import numpy as np
+import matplotlib.animation as animation
+import math
 
-
-
-# Set up figure and axes
-
+# Define the figure and axis
 fig, ax = plt.subplots()
 
-ax.set_aspect('equal')
+# Define the ellipse parameters
+"""
+a = 400000
+b = 200000
 
-ax.set_xlim(-1.5, 1.5)
+c = a**2 - b**2
+c = abs(c)
+c = math.sqrt(c)
+print(c)
+"""
 
-ax.set_ylim(-1.5, 1.5)
-
-ax.set_facecolor('white')
-
-
-
-# Initialize Earth and Moon positions
-
-earth_x = 1
-
-earth_y = 0
-
-moon_x = 0.5
-
-moon_y = 0
-
-
-
-# Create Earth and Moon objects
-
-earth = plt.Circle((earth_x, earth_y), 0.1, fc='blue')
-
-moon = plt.Circle((moon_x, moon_y), 0.03, fc='gray')
-
-
-
-# Add Earth and Moon to axes
-
-ax.add_patch(earth)
-
-ax.add_patch(moon)
-
-
-
-# Define animation function
+x0 = 400000000                        #distnace from the earth
+opx = -1 * x0
+y0 = 0
+opy = y0
+G = 6.67*10**-11                    #gravity constant
+print(G)
+mH = 5.97*10**30                 #mass of the planet
+mH2 = 5.97*10**24
+print(mH)
+#formulas
+#div = x**2 + y**2
+#div = div **1.5
+#aax = -1 * mH*G*a / div
+#aay = mH*G*b / div
+#vx = vx + ax * i
+#vy = vy + ax * i 
+#x = x + vx * i
+#y = y + vy * i 
+vx0 = 0 
+vy0 = 1000000                         #intial velocities
+opvx = vx0 * -1
+opvy = -1 * vy0
+div = x0**2 + y0**2                 #gets the bottom of the acceleration equation
+div = div **1.5
+opdiv = opx**2 + opy**2
+opdiv = opdiv **1.5
+print(div)
+aax0 = -1 * G*mH *x0 / div          #acceleration of the x
+print("x accel")
+print(aax0)
+aay0 = -1 * G *mH*y0/div            #accleration of the y
+opax = -1 * G *mH2*opx/opdiv
+opay = -1 * G *mH2*opy/opdiv
+print(aay0)
+# Define the animation function
+inter = 10
+data = [vx0,vy0,x0,y0,aax0,aay0,inter]              #takes the initial conditions
+opdata = [opvx,opvy,opx,opy,opax,opay,inter]
+print(data)
+print(opdata)
 
 def animate(i):
+# Clear the axis for each iteration
+    ax.clear()
+    inter= data[6]
+    print(inter)
+    aax = data[4]
+    aay = data[5]
+    vx = data[0]
+    vy = data[1]
+    vx = vx + aax * inter                       #uses the acceleration of the x times the interval to get a new acceration
+    vy = vy + aay * inter                       #NEEDS TO BE MINUES BC ITS WEIRD
+    data[0] = vx                                #sets them into the data
+    data[1] = vy
+    x = data[2]
+    yzor = data[3]
+    x = x + vx * inter                          #uses the velocity to find the x and y 
+    yzor = yzor + vy * inter 
+    data[2] = x
+    data[3] = yzor
+    print(x)
+    print(yzor)
+    div = x**2 + yzor**2
+    div = div **1.5
+    aax = -1 * mH*G*x / div                     #finds the new acceleration
+    aay = -1 * mH*G*yzor / div
+    data[4] = aax
+    data[5] = aay
+    # Plot the ellipse
+    ax.plot(x, yzor, 'ro')                      #plots the cordinates                   #plots the cordinates
 
-    # Update Moon position
-
-    moon_x = 0.5 * np.cos(i * 0.01)
-
-    moon_y = 0.5 * np.sin(i * 0.01)
-
-    moon.center = (moon_x, moon_y)
-
-    
-
-    # Update Earth position 
-
-    earth_x = np.cos(i * 0.005)
-
-    earth_y = np.sin(i * 0.005)       
-
-    earth.center = (earth_x, earth_y)
-
-    
-
-    return earth, moon,
 
 
+    # Set the axis limits
+    ax.set_xlim(-10**9, 10**9)                  #sets the veiwing window
+    ax.set_ylim(-10**9, 10**9)
 
-# Create animation
-
-ani = animation.FuncAnimation(fig, animate, frames=2000, blit=True, interval=20)
-
-
-
-# Show plot
+# Call the animation function and display the animation
+ani = animation.FuncAnimation(fig, animate, frames=500, interval=inter)            #the frames that make it equal to 2pi is a full circle 
 
 plt.show()
