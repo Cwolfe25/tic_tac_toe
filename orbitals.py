@@ -16,7 +16,7 @@ c = abs(c)
 c = math.sqrt(c)
 print(c)
 """
-x0 = 4000000                        #distnace from the earth
+x0 = 2000000                        #distnace from the earth
 y0 = 0
 G = 6.67*10**-11                    #gravity constant
 print(G)
@@ -32,7 +32,7 @@ print(mH)
 #x = x + vx * i
 #y = y + vy * i 
 vx0 = 0 
-vy0 = 8000                          #intial velocities
+vy0 = 15000                          #intial velocities
 div = x0**2 + y0**2                 #gets the bottom of the acceleration equation
 div = div **1.5
 print(div)
@@ -42,7 +42,7 @@ print(aax0)
 aay0 = -1 * G *mH*y0/div            #accleration of the y
 print(aay0)
 # Define the animation function
-inter = 5
+inter = 1
 it = 0
 data = [vx0,vy0,x0,y0,aax0,aay0,inter,it]              #takes the initial conditions
 
@@ -80,11 +80,13 @@ def animate(i):
     t = data[7]
     t = t +inter
     data[7] = t
+    """
     with open("planet.csv","a", newline = "")as add:
         csv = [t,x,yzor]
         enter = writer(add)
         enter.writerow(csv)
         add.close()
+    """
 
     # Set the axis limits
     ax.set_xlim(-10**7, 10**7)                  #sets the veiwing window
