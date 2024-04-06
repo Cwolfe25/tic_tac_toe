@@ -29,7 +29,7 @@ def main():
     while a == '':
         a = input("have to enter something here: ")
     while b == '':
-        r = input("have to enter something here: ")
+        b = input("have to enter something here: ")
     a = int(a)
     b = int(b)
     alice = MatrixMonday(a,b)
@@ -43,6 +43,12 @@ def main():
         print("second matrix:")
         alice.print()
     destroy = 0
+    print("dimentions of 1")
+    print(r)
+    print(c)
+    print("dimentions of 2")
+    print(a)
+    print(b)
     while destroy == 0:
         print("functions:")
         print("matrix addition = 1")
@@ -64,11 +70,12 @@ def main():
         elif choice == "2":       #need to make another one both ways
             print("you chose matrix multiplication")
             m = input("which matrix do you want to multiply (which matrix do you want to multiply into the other: 1 or 2):? ")
-            if m == "1" and r == b:
+            
+            if m == "1" and c == a:
                 mpt = trixie.times(alice)
                 print("multiplied matrix")
                 mpt.print()
-            elif m == "2" and c == a:
+            elif m == "2" and r == b:
                 mpt = alice.times(trixie)
                 print("multiplied matrix")
                 mpt.print()
