@@ -81,27 +81,28 @@ class MatrixMonday:
 
         """
         mp = MatrixMonday(self.rows,other.columns)                                      #Creates to matrix to store the products 
-        if self.rows == other.columns:                                                  #makes sure the matrixs can be multipied by seeing if rows matrix 1 = colums matrix 2
-            for i in range(self.rows):                                                  #goes through the rows of matrix 1
-                
-                for j in range(other.columns):                                          #goes through columns of matrix 2
+        mp.print()                                                 #makes sure the matrixs can be multipied by seeing if rows matrix 1 = colums matrix 2
+        for i in range(self.rows):                                                  #goes through the rows of matrix 1    
+            for j in range(other.columns):                                          #goes through columns of matrix 2
+                   
+                added = 0 
+
+                added = float(added)
+                for c in range(self.columns):                                       #goes through the columns of matrix 1
+                                                     #goes through the rows of matrix 2
+                            
+                    s1 = self.get_entry(i,c)                                    #finds the values of the locations
                     
-                    added = 0 
-                    added = float(added)
-                    for c in range(self.columns):                                       #goes through the columns of matrix 1
-                        for r in range(other.rows):                                     #goes through the rows of matrix 2
-                            s1 = self.get_entry(i,c)                                    #finds the values of the locations
-                            o1 = other.get_entry(r,j)
-                            s1 = float(s1)
-                            o1 = float(o1)
-                            temp = s1 * o1                                              #multiplies both of the values togeather
-                            temp = float(temp)
-                            added = added + temp                                        #adds the product to a temp
-                    if int(added) == added:                                             #sees if the sum is a whole number
-                        added = int(added)        
-                    mp.set_entry(i,j,added)                                             #sets the sum into the temp matrix
-        else:
-            print("diamentions are off, can't print")                                   #breaks the function if hte dimentions are off(need to makes sure it breaks)
+                    o1 = other.get_entry(c,j)
+                    s1 = float(s1)
+                    o1 = float(o1)
+                    temp = s1 * o1                                              #multiplies both of the values togeather
+                            
+                    added = added + temp                                        #adds the product to a temp
+                if int(added) == added:                                             #sees if the sum is a whole number
+                    added = int(added)        
+                mp.set_entry(i,j,added)                                             #sets the sum into the temp matrix
+
         return(mp)
 
     def scalarTimesRow(self, numb, row):
