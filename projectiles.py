@@ -8,24 +8,29 @@ displacementy = 0
 degree = float(degree)
 launchv = float(launchv)
 yv = math.sin(degree)
+yv = abs(yv)
 yv = yv * launchv
 xv = math.cos(degree)
+xv = abs(xv)
 xv = xv * launchv
 equation = [-9.8, yv, 0]
+eqx = [xv,0]
+flightx = polynomial(eqx)
 flight = polynomial(equation)
 time = yv / 9.8
-time = math.sqrt(time)
+print(time)
+#time = math.sqrt(time)
 displacementx = xv * time
+print(displacementx)
 count = 0
 
 plotint = .01
 x = [count]
 y = [flight.plugin(count)]
-while count <= displacementx:
-        
+while count <= time:
     count = count + plotint
         
-    x.append(count)
+    x.append(flightx.plugin(count))
     y.append(flight.plugin(count))
 plt.plot(x, y)
 plt.show()
